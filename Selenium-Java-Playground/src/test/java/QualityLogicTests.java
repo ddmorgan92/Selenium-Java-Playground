@@ -1,13 +1,12 @@
 import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Function;
 
 public class QualityLogicTests {
@@ -144,6 +143,9 @@ public class QualityLogicTests {
         try{
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             WebDriver driver = new ChromeDriver();
+            //JavaScript executor
+            JavascriptExecutor js = (JavascriptExecutor)driver;
+
             driver.manage().window().maximize();
             driver.get("https://www.qualitylogic.com");
             driver.findElement(By.linkText("Watch How it Works")).sendKeys(Keys.ENTER);
@@ -159,14 +161,21 @@ public class QualityLogicTests {
                     return driver.findElement(By.xpath("/html/body/div/div/div[4]/button"));
                 }
             });
-
             WebElement playButton = driver.findElement(By.xpath("/html/body/div/div/div[4]/button"));
+            Assert.assertEquals(playButton.getAttribute("aria-label"), "Play");
             playButton.click();
-            Boolean result = false;
-            //WebElement youtubePlayPause = driver.findElement(By.cssSelector("div.ytp-button")).get(0);
+            //Skip video ahead 60 seconds
+            js.executeScript("document.getElementsByTagName(\"video\")[0].currentTime += 60");
+            Thread.sleep(1000);
+            //Skip video back 30 seconds
+            js.executeScript("document.getElementsByTagName(\"video\")[0].currentTime -= 30");
+            //Pause
+            Thread.sleep(1000);
+            WebElement pauseButton = driver.findElement(By.xpath("/html/body/div/div/div[25]/div[2]/div[1]/button"));
+            Assert.assertEquals(pauseButton.getAttribute("aria-label"), "Pause");
+            pauseButton.click();
 
-
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             driver.close();
         } catch (Exception e){
             e.printStackTrace();
