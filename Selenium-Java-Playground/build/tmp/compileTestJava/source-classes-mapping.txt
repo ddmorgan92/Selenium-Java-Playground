@@ -1,3 +1,2 @@
 QualityLogicTests.java
  QualityLogicTests
- QualityLogicTests$1
