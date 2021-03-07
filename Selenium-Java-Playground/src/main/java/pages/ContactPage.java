@@ -22,13 +22,6 @@ public class ContactPage {
     By ProjectDescriptionField = By.name("project_description");
 
 
-    //Information for Consultation Request
-    public String firstName = "Dustin";
-    public String lastName = "Morgan";
-    public String workEmail = "dmorgan@qualitylogic.com";
-    public String company = "Quality Logic";
-    public String aboutProject = "I am interested in getting feedback regarding an automation program I have created!";
-
     //Error message validation
     public Integer expectedErrorCount = 6;
     public Integer actualErrorCount() {
@@ -36,22 +29,22 @@ public class ContactPage {
         return errorList.size();
     }
 
-    public void inputFirstName() {
+    public void inputFirstName(String firstName) {
         driver.findElement(FirstNameField).sendKeys(firstName);
         expectedErrorCount--;
     }
 
-    public void inputLastName() {
+    public void inputLastName(String lastName) {
         driver.findElement(LastNameField).sendKeys(lastName);
         expectedErrorCount--;
     }
 
-    public void inputEmail() {
+    public void inputEmail(String workEmail) {
         driver.findElement(EmailField).sendKeys(workEmail);
         expectedErrorCount--;
     }
 
-    public void inputCompany() {
+    public void inputCompany(String company) {
         driver.findElement(CompanyField).sendKeys(company);
         expectedErrorCount--;
     }
@@ -62,7 +55,7 @@ public class ContactPage {
           expectedErrorCount--;
     }
 
-    public void inputProjectDescription() {
+    public void inputProjectDescription(String aboutProject) {
         driver.findElement(ProjectDescriptionField).sendKeys(aboutProject);
         expectedErrorCount--;
     }

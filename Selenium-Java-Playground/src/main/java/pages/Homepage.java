@@ -61,6 +61,9 @@ public class Homepage {
     By PauseButton;
     public String PlayAriaLabel;
     public String PauseAriaLabel;
+    public String expectedPlayAria = "Play";
+    public String expectedPauseAria = "Pause (k)";
+
 
     //video methods
     public void engageVideoModal() throws InterruptedException {
@@ -94,5 +97,11 @@ public class Homepage {
         Thread.sleep(1000);
     }
 
+
+    public void skipVideo(int x) throws InterruptedException{
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("document.getElementsByTagName(\"video\")[0].currentTime += " + x);
+        Thread.sleep(2000);
+    }
 
 }

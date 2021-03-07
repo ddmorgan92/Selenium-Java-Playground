@@ -1,6 +1,6 @@
-pages/ContactPage.java
- pages.ContactPage
-pages/MobileAppsPage.java
- pages.MobileAppsPage
 pages/Homepage.java
  pages.Homepage
+pages/MobileAppsPage.java
+ pages.MobileAppsPage
+pages/ContactPage.java
+ pages.ContactPage

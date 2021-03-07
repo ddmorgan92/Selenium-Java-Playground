@@ -1,5 +1,4 @@
 import org.openqa.selenium.*;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -53,48 +52,40 @@ public class QualityLogicTests {
             driver.get(home.expectedUrl);
             home.clickScheduleConsultLink();
             contact.submitForm();
-            System.out.println("Initial expected error count: " + contact.expectedErrorCount);
 
             //Count the number of errors, decrement expected amount by 1
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
-            System.out.println("Number of errors: " + contact.actualErrorCount());
 
             //Submit w/ First Name only, assert the correct # of errors, decrement expected amount by 1
-            contact.inputFirstName();
+            contact.inputFirstName("Dustin");
             contact.submitForm();
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
-            System.out.println("Number of errors: " + contact.actualErrorCount());
 
             //Submit w/ first name, last name
-            contact.inputLastName();
+            contact.inputLastName("Morgan");
             contact.submitForm();
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
-            System.out.println("Number of errors: " + contact.actualErrorCount());
 
             //Submit w/ first name, last name, work email
-            contact.inputEmail();
+            contact.inputEmail("dmorgan@qualitylogic.com");
             contact.submitForm();
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
-            System.out.println("Number of errors: " + contact.actualErrorCount());
 
             //Submit w/ first name, last name, work email, company
-            contact.inputCompany();
+            contact.inputCompany("Quality Logic");
             contact.submitForm();
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
-            System.out.println("Number of errors: " + contact.actualErrorCount());
 
             //Submit w/ firstname, last name, work email, company, area of interest
             contact.selectAreaOfInterest();
             contact.submitForm();
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
-            System.out.println("Number of errors: " + contact.actualErrorCount());
 
             //Submit w/ firstname, last name, work email, company, area of interest, about project
             //Final submit - encounters CAPTCHA
-            contact.inputProjectDescription();
+            contact.inputProjectDescription("Selenium Automation Project");
             contact.submitForm();
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
-            System.out.println("Number of errors: " + contact.actualErrorCount());
             driver.quit();
 
         } catch (Exception e){
@@ -108,24 +99,21 @@ public class QualityLogicTests {
         try{
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
             WebDriver driver = new ChromeDriver();
-            //JavaScript executor
-            JavascriptExecutor js = (JavascriptExecutor)driver;
             driver.manage().window().maximize();
 
             //Creating page objects
             Homepage home = new Homepage(driver);
 
+            //Navigate to Homepage and Open Video Modal
             driver.get(home.expectedUrl);
-            //Open Video Modal
             home.engageVideoModal();
-            Assert.assertEquals(home.PlayAriaLabel, "Play");
-            //Select Play Button
+            Assert.assertEquals(home.PlayAriaLabel, home.expectedPlayAria);
+            //Play video, skip forward and backwards
             home.playVideo();
-            //Skip video forward and back
-            js.executeScript("document.getElementsByTagName(\"video\")[0].currentTime += 60");
-            js.executeScript("document.getElementsByTagName(\"video\")[0].currentTime -= 30");
-            //Pause
-            Assert.assertEquals(home.PauseAriaLabel, "Pause (k)");
+            home.skipVideo(60);
+            home.skipVideo(-30);
+            home.skipVideo(90);
+            Assert.assertEquals(home.PauseAriaLabel, home.expectedPauseAria);
             home.pauseVideo();
 
             Thread.sleep(2000);
