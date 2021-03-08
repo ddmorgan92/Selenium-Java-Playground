@@ -1,6 +1,12 @@
-pages/Homepage.java
- pages.Homepage
-pages/MobileAppsPage.java
- pages.MobileAppsPage
+pages/SoftwareTestServicesPage.java
+ pages.SoftwareTestServicesPage
+pages/WebAppsPage.java
+ pages.WebAppsPage
 pages/ContactPage.java
  pages.ContactPage
+pages/AccessibilityTestingPage.java
+ pages.AccessibilityTestingPage
+pages/MobileAppsPage.java
+ pages.MobileAppsPage
+pages/Homepage.java
+ pages.Homepage

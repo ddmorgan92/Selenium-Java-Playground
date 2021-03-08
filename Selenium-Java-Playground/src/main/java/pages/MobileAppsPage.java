@@ -2,8 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class MobileAppsPage
-{
+public class MobileAppsPage {
     WebDriver driver;
 
     public MobileAppsPage(WebDriver driver){

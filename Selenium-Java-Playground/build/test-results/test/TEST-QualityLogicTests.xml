@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="QualityLogicTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-07T05:57:42" hostname="DESKTOP-R0G4H1R" time="28.771">
+<testsuite name="QualityLogicTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-03-08T18:10:36" hostname="DESKTOP-R0G4H1R" time="7.07">
   <properties/>
-  <testcase name="mobileTestingNav" classname="QualityLogicTests" time="6.1"/>
-  <testcase name="scheduleConsult" classname="QualityLogicTests" time="7.365"/>
-  <testcase name="youtubeEmbed" classname="QualityLogicTests" time="15.303"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 89.0.4389.23 (61b08ee2c50024bab004e48d2b1b083cdbdac579-refs/branch-heads/4389@{#294}) on port 40661
+  <testcase name="youtubeAriaLabelTest" classname="QualityLogicTests" time="7.07"/>
+  <system-out><![CDATA[SYSTEMS ENGAGE
+PLAY
+Current video time (in seconds): 0.699004
+SKIPPING FORWARD
+Current video time (in seconds): 30.709896
+SKIPPING BACKWARD
+Current video time (in seconds): 20.709896
+SKIPPING FORWARD
+Current video time (in seconds): 40.709896
+PAUSE
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 89.0.4389.23 (61b08ee2c50024bab004e48d2b1b083cdbdac579-refs/branch-heads/4389@{#294}) on port 37644
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Mar 06, 2021 11:57:43 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 89.0.4389.23 (61b08ee2c50024bab004e48d2b1b083cdbdac579-refs/branch-heads/4389@{#294}) on port 27079
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-Mar 06, 2021 11:57:49 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Starting ChromeDriver 89.0.4389.23 (61b08ee2c50024bab004e48d2b1b083cdbdac579-refs/branch-heads/4389@{#294}) on port 1642
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-Mar 06, 2021 11:57:56 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Mar 08, 2021 12:10:38 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>

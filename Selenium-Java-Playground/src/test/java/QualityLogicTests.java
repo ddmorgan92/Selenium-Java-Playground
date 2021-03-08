@@ -3,12 +3,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Homepage;
-import pages.ContactPage;
+import pages.SoftwareTestServicesPage;
 import pages.MobileAppsPage;
+import pages.WebAppsPage;
+import pages.AccessibilityTestingPage;
+import pages.ContactPage;
+
 
 public class QualityLogicTests {
+
     @Test
-    public static void mobileTestingNav() throws InterruptedException
+    public static void WebAppsNavTest()
     {
         try {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
@@ -18,16 +23,43 @@ public class QualityLogicTests {
             //Creating page objects
             Homepage home = new Homepage(driver);
             MobileAppsPage mobileApps = new MobileAppsPage(driver);
+            SoftwareTestServicesPage softwareTestServices = new SoftwareTestServicesPage(driver);
+            WebAppsPage webApps = new WebAppsPage(driver);
+            AccessibilityTestingPage accessibility = new AccessibilityTestingPage(driver);
+
 
             //Navigate to homepage, assert title and URL are correct
             driver.get(home.expectedUrl);
             Assert.assertEquals(driver.getTitle(), home.expectedTitle);
             Assert.assertEquals(driver.getCurrentUrl(), home.expectedUrl);
 
-            //Click on mobile testing link (nested)
-            home.clickMobileAppsLink();
+            //Click a link on the page
+            //For nested links (e.g. navbar), enter the links that need to be hovered, ending with the link to click
+            //Input must be in the form of a By[] array (e.g. new By[]{home.TestServicesLink})
+            home.clickNavLink(new By[]{home.TestServicesLink, home.WhatWeTestLink, home.MobileAppsLink});
             Assert.assertEquals(driver.getTitle(), mobileApps.expectedTitle);
             Assert.assertEquals(driver.getCurrentUrl(), mobileApps.expectedUrl);
+
+            driver.navigate().back();
+            home.clickNavLink(new By[]{home.TestServicesLink, home.TestSolutionsLink, home.AccessibilityTestingLink});
+            Assert.assertEquals(driver.getTitle(), accessibility.expectedTitle);
+            Assert.assertEquals(driver.getCurrentUrl(), accessibility.expectedUrl);
+
+            driver.navigate().back();
+            home.clickNavLink(new By[]{home.TestServicesLink, home.SoftwareTestServicesLink});
+            Assert.assertEquals(driver.getTitle(), softwareTestServices.expectedTitle);
+            Assert.assertEquals(driver.getCurrentUrl(), softwareTestServices.expectedUrl);
+
+            driver.navigate().back();
+            home.clickNavLink(new By[]{home.TestServicesLink, home.WhatWeTestLink, home.WebsitesWebAppsLink});
+            Assert.assertEquals(driver.getTitle(), webApps.expectedTitle);
+            Assert.assertEquals(driver.getCurrentUrl(), webApps.expectedUrl);
+
+            driver.navigate().back();
+            home.clickNavLink(new By[]{home.TestServicesLink});
+            //assert equal to homepage because this link has an href value of '#'
+            Assert.assertEquals(driver.getTitle(), home.expectedTitle);
+            Assert.assertEquals(driver.getCurrentUrl(), home.expectedUrl);
 
             driver.quit();
 
@@ -37,7 +69,7 @@ public class QualityLogicTests {
     }
 
     @Test
-    void scheduleConsult() throws InterruptedException
+    void verifyContactFormErrorMessages()
     {
         try {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
@@ -48,11 +80,20 @@ public class QualityLogicTests {
             Homepage home = new Homepage(driver);
             ContactPage contact = new ContactPage(driver);
 
-            //Navigate to homepage, select Consultation link, press Submit button
+            //Navigate to homepage
             driver.get(home.expectedUrl);
-            home.clickScheduleConsultLink();
-            contact.submitForm();
+            Assert.assertEquals(driver.getCurrentUrl(), home.expectedUrl);
+            Assert.assertEquals(driver.getTitle(), home.expectedTitle);
 
+            //Navigate to Consultation Request Page
+            home.clickNavLink(new By[]{home.ScheduleConsultLink});
+            Assert.assertEquals(driver.getCurrentUrl(), contact.expectedUrl);
+            Assert.assertEquals(driver.getTitle(), contact.expectedTitle);
+
+            //Generate expected error count based on fields with 'required' attribute
+            contact.generateExpectedErrorCount();
+            //Once Submit button is present, submit Form
+            contact.submitForm();
             //Count the number of errors, decrement expected amount by 1
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
 
@@ -77,7 +118,9 @@ public class QualityLogicTests {
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
 
             //Submit w/ firstname, last name, work email, company, area of interest
-            contact.selectAreaOfInterest();
+            //Choose area of interest by index of Select element
+            //Do not use Index 0
+            contact.selectAreaOfInterest(3);
             contact.submitForm();
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
 
@@ -86,15 +129,16 @@ public class QualityLogicTests {
             contact.inputProjectDescription("Selenium Automation Project");
             contact.submitForm();
             Assert.assertEquals(contact.actualErrorCount(), contact.expectedErrorCount);
-            driver.quit();
 
+            driver.close();
+            driver.quit();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 
     @Test
-    void youtubeEmbed() throws InterruptedException
+    void youtubeAriaLabelTest()
     {
         try{
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
@@ -110,13 +154,16 @@ public class QualityLogicTests {
             Assert.assertEquals(home.PlayAriaLabel, home.expectedPlayAria);
             //Play video, skip forward and backwards
             home.playVideo();
-            home.skipVideo(60);
-            home.skipVideo(-30);
-            home.skipVideo(90);
+            System.out.println("Current video time (in seconds): " + home.currentVideoTime());
+            home.skipVideo(30);
+            System.out.println("Current video time (in seconds): " + home.currentVideoTime());
+            home.skipVideo(-10);
+            System.out.println("Current video time (in seconds): " + home.currentVideoTime());
+            home.skipVideo(20);
+            System.out.println("Current video time (in seconds): " + home.currentVideoTime());
             Assert.assertEquals(home.PauseAriaLabel, home.expectedPauseAria);
             home.pauseVideo();
 
-            Thread.sleep(2000);
             driver.quit();
         } catch (Exception e){
             e.printStackTrace();
