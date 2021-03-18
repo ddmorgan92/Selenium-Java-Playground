@@ -28,29 +28,29 @@ public class Homepage {
     public By MobileAppsLink = By.linkText("Mobile Apps");
     public By WebsitesWebAppsLink = By.linkText("Websites and Web Apps");
 
-//    By OttStreamingMediaLink = By.linkText("OTT & Streaming Media");
-//    By SmartEnergyStandardsLink = By.linkText("Smart Energy Standards");
-//    By BigDataAnalyticsLink = By.linkText("Big Data Analytics & Telemetry");
-//    By ApiTestingLink = By.linkText("API Testing");
-//    By VirtualARTestingLink = By.linkText("Virtual and Augmented Reality Testing");
-//    By ECommerceLink = By.linkText("eCommerce");
-//    By IOTLink = By.linkText("Internet of Things (IoT)");
-//    By PrintSystemsLink = By.linkText("Print Systems");
-//    By FaxLink = By.linkText("Fax & Fax over IP Testing");
-//        //Test Solutions subsection
+    public By OttStreamingMediaLink = By.linkText("OTT & Streaming Media");
+    public By SmartEnergyStandardsLink = By.linkText("Smart Energy Standards");
+    public By BigDataAnalyticsLink = By.linkText("Big Data Analytics & Telemetry");
+    public By ApiTestingLink = By.linkText("API Testing");
+    public By VirtualARTestingLink = By.linkText("Virtual and Augmented Reality Testing");
+    public By ECommerceLink = By.linkText("eCommerce");
+    public By IOTLink = By.linkText("Internet of Things (IoT)");
+    public By PrintSystemsLink = By.linkText("Print Systems");
+    public By FaxLink = By.linkText("Fax & Fax over IP Testing");
+        //Test Solutions subsection
     public By TestSolutionsLink = By.linkText("Test Solutions");
-//    By FunctionalTestingLink = By.linkText("Functional Testing");
-//    By TestAutomationLink = By.linkText("Test Automation Services");
-//    By UsabilityTestingLink = By.linkText("Usability Testing");
+    public By FunctionalTestingLink = By.linkText("Functional Testing");
+    public By TestAutomationLink = By.linkText("Test Automation Services");
+    public By UsabilityTestingLink = By.linkText("Usability Testing");
     public By AccessibilityTestingLink = By.linkText("Accessibility Testing");
-//    By WCAGLink = By.linkText("WCAG Compliance Testing & Certification");
-//    By LoadTestingLink = By.linkText("Load & Performance Testing");
-//    By RegressionTestingLink = By.linkText("Regression Testing");
-//    By ExploratoryTestingLink = By.linkText("Exploratory Testing");
-//    By InteroperabilityLink = By.linkText("Interoperability Testing");
-//    By QATestToolsLink = By.linkText("QA Test Tools");
-//    By AgileQALink = By.linkText("Agile QA");
-//    By TestTechTrainingLink = By.linkText("Test & Technology Training");
+    public By WCAGLink = By.linkText("WCAG Compliance Testing & Certification");
+    public By LoadTestingLink = By.linkText("Load & Performance Testing");
+    public By RegressionTestingLink = By.linkText("Regression Testing");
+    public By ExploratoryTestingLink = By.linkText("Exploratory Testing");
+    public By InteroperabilityLink = By.linkText("Interoperability Testing");
+    public By QATestToolsLink = By.linkText("QA Test Tools");
+    public By AgileQALink = By.linkText("Agile QA");
+    public By TestTechTrainingLink = By.linkText("Test & Technology Training");
         //Many more links - WIP
 
     //Contact Us Links

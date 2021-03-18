@@ -19,6 +19,7 @@ public class ContactPage {
 
     //Error message validation
     public Integer expectedErrorCount;
+    public Integer immutableExpectedErrorCount;
 
     public void generateExpectedErrorCount() {
 
@@ -29,6 +30,7 @@ public class ContactPage {
         List<WebElement> requiredTextAreas = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//textarea[@required]")));
         expectedErrorCount = requiredInputs.size() + requiredSelects.size() + requiredTextAreas.size();
+        immutableExpectedErrorCount = requiredInputs.size() + requiredSelects.size() + requiredTextAreas.size();
         System.out.println(expectedErrorCount);
     }
 

@@ -1,2 +1,4 @@
-QualityLogicTests.java
- QualityLogicTests
+HomepageTests.java
+ HomepageTests
+ContactUsTests.java
+ ContactUsTests
