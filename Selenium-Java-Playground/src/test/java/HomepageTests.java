@@ -1,7 +1,7 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.Homepage;
 import pages.SoftwareTestServicesPage;
 import pages.MobileAppsPage;
@@ -11,6 +11,27 @@ import pages.AccessibilityTestingPage;
 
 
 public class HomepageTests {
+
+    @BeforeClass
+    void beforeClass(){
+        System.out.println("Class Initiated - Home");
+    }
+
+    @AfterClass
+    void afterClass(){
+        System.out.println("Class Completed - Home");
+    }
+
+    @BeforeMethod
+    void beforeMethod(){
+        System.out.println("Method Initiated - Home");
+    }
+
+    @AfterMethod
+    void afterMethod(){
+        System.out.println("Method Completed - Home");
+    }
+
     @Test
     public static void SoftwareServicesNavTest()
     {

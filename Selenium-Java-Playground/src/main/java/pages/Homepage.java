@@ -100,8 +100,6 @@ public class Homepage {
             PlayAriaLabel = driver.findElement(By.xpath("/html/body/div/div/div[4]/button")).getAttribute("aria-label");
             return driver.findElement(By.xpath("/html/body/div/div/div[4]/button"));
         });
-
-        System.out.println("SYSTEMS ENGAGE");
     }
         //Play video, assign Pause button locator and actual aria label
     public void playVideo() {
@@ -116,23 +114,16 @@ public class Homepage {
             PauseAriaLabel = driver.findElement(By.xpath("/html/body/div/div/div[25]/div[2]/div[1]/button")).getAttribute("aria-label");
             return driver.findElement(By.xpath("/html/body/div/div/div[25]/div[2]/div[1]/button"));
         });
-        System.out.println("PLAY");
     }
 
     public void pauseVideo() {
         driver.findElement(PauseButton).click();
-        System.out.println("PAUSE");
     }
 
         //Skip video, forward or backward
     public void skipVideo(int x) {
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("document.getElementsByTagName(\"video\")[0].currentTime += " + x);
-        if(x >= 0){
-            System.out.println("SKIPPING FORWARD");
-        } else {
-            System.out.println("SKIPPING BACKWARD");
-        }
     }
 
     public Double currentVideoTime(){

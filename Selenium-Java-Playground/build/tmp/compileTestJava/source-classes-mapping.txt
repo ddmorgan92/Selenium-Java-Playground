@@ -2,3 +2,5 @@ HomepageTests.java
  HomepageTests
 ContactUsTests.java
  ContactUsTests
+StoreTests.java
+ StoreTests

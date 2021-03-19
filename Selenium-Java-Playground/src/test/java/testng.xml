@@ -2,10 +2,31 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="C:/Users/ddmor/IdeaProjects/Selenium-Java-Playground">
+    <test verbose="2" preserve-order="true" name="QualityLogicTests">
         <classes>
-            <class name="HomepageTests"/>
-            <class name="ContactUsTests"/>
+            <class name="HomepageTests">
+                <methods>
+                    <include name="SoftwareServicesNavTest"/>
+                    <include name="MobileAppsNavTest"/>
+                    <include name="WebAppsNavTest"/>
+                    <include name="OTTNavTest"/>
+                    <include name="LargeNavTest"/>
+                    <include name="youtubeAriaLabelTest"/>
+                </methods>
+            </class>
+
+            <class name="ContactUsTests">
+                <methods>
+                    <include name="verifyContactFormErrorMessages"/>
+                    <include name="verifyContactFormInvalidEntries"/>
+                </methods>
+            </class>
+
+            <class name="StoreTests">
+                <methods>
+                    <include name="AddSingleProductToCart"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

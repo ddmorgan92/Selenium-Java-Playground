@@ -31,7 +31,6 @@ public class ContactPage {
                 .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//textarea[@required]")));
         expectedErrorCount = requiredInputs.size() + requiredSelects.size() + requiredTextAreas.size();
         immutableExpectedErrorCount = requiredInputs.size() + requiredSelects.size() + requiredTextAreas.size();
-        System.out.println(expectedErrorCount);
     }
 
     public Integer actualErrorCount() {

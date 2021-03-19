@@ -8,7 +8,9 @@ pages/AccessibilityTestingPage.java
  pages.AccessibilityTestingPage
 pages/MobileAppsPage.java
  pages.MobileAppsPage
-pages/Homepage.java
- pages.Homepage
 pages/ContactPage.java
  pages.ContactPage
+pages/Homepage.java
+ pages.Homepage
+pages/StorePage.java
+ pages.StorePage

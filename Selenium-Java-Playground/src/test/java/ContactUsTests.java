@@ -1,12 +1,32 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.ContactPage;
-import pages.Homepage;
 
 public class ContactUsTests {
+
+    @BeforeClass
+    void beforeClass(){
+        System.out.println("Class Initiated - Contact");
+    }
+
+    @AfterClass
+    void afterClass(){
+        System.out.println("Class Completed - Contact");
+    }
+
+    @BeforeTest
+    void beforeMethod(){
+        System.out.println("Method Initiated - Contact");
+    }
+
+    @AfterTest
+    void afterMethod(){
+        System.out.println("Method Completed - Contact");
+    }
+
+
     @Test
     void verifyContactFormErrorMessages()
     {
@@ -16,7 +36,6 @@ public class ContactUsTests {
             driver.manage().window().maximize();
 
             //Creating page objects
-            Homepage home = new Homepage(driver);
             ContactPage contact = new ContactPage(driver);
 
             //Navigate to the Contact Page
@@ -73,7 +92,7 @@ public class ContactUsTests {
     }
 
     @Test
-    void contactFormInvalidEntries()
+    void verifyContactFormInvalidEntries()
     {
         try {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
@@ -81,7 +100,6 @@ public class ContactUsTests {
             driver.manage().window().maximize();
 
             //Creating page objects
-            Homepage home = new Homepage(driver);
             ContactPage contact = new ContactPage(driver);
 
             //Navigate to the Contact Page
